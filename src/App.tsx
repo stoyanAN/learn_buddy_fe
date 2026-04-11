@@ -1,6 +1,6 @@
 import './App.css'
 import {Button} from "@/components/ui/button.tsx";
-import api from '@/services/api.ts'
+import api from '@/shared/services/api.ts'
 import {JWT_KEY} from "@/shared/constants/storage-keys.const.ts";
 import {useEffect} from "react";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
