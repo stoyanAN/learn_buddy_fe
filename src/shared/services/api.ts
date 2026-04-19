@@ -20,7 +20,7 @@ api.interceptors.request.use((config: InternalAxiosRequestConfig) => {
 api.interceptors.response.use(
     (response: AxiosResponse) => response, // success — just pass it through
     async (error) => {
-        if (error.response?.status === 401 && error.config.url !== 'auth/refresh') {
+        if (error.response?.status === 401 && error.config.url !== '/auth/refresh' && error.config.url !== '/auth/login') {
             // 👈 token expired — what should happen here?
             try {
                 const refreshTokenResponse: AxiosResponse = await api.post('auth/refresh');
