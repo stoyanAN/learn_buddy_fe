@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 110" width="280" height="110">
+
+  <!-- Bordered monogram mark — centred at x=140 -->
+  <rect
+    x="121" y="8"
+    width="38" height="38"
+    rx="8" ry="8"
+    fill="none"
+    stroke="#1a1916"
+    stroke-width="2"
+  />
+  <text
+    x="140" y="33"
+    text-anchor="middle"
+    font-family="'Arial Black', 'Arial Bold', sans-serif"
+    font-weight="800"
+    font-size="17"
+    fill="#1a1916"
+    letter-spacing="-0.5"
+  >LB</text>
+
+  <!-- Wordmark -->
+  <text
+    x="140" y="68"
+    text-anchor="middle"
+    font-family="'Arial Black', 'Arial Bold', sans-serif"
+    font-weight="800"
+    font-size="19"
+    fill="#1a1916"
+    letter-spacing="3"
+  >LEARN BUDDY</text>
+
+  <!-- Left hairline — vertically centred with tagline cap-height (~y=83) -->
+  <line x1="14" y1="83" x2="70" y2="83" stroke="#c8c5bc" stroke-width="0.75"/>
+
+  <!-- Tagline -->
+  <text
+    x="140" y="87"
+    text-anchor="middle"
+    font-family="'Helvetica Neue', Arial, sans-serif"
+    font-weight="400"
+    font-size="8"
+    fill="#52b788"
+    letter-spacing="2"
+  >AI STUDY COMPANION</text>
+
+  <!-- Right hairline -->
+  <line x1="210" y1="83" x2="266" y2="83" stroke="#c8c5bc" stroke-width="0.75"/>
+
+</svg>

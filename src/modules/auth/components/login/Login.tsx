@@ -19,7 +19,7 @@ function Login() {
             email: '',
             password: ''
         },
-        mode: 'onBlur'
+        mode: 'onTouched'
     });
     const logUserIn = useLogin(reset);
 
@@ -30,15 +30,18 @@ function Login() {
 
     return (<Card className="w-2/3 sm:max-w-md dark:bg-stone-900">
         <CardHeader>
-            <CardTitle>Login</CardTitle>
-            <CardDescription>Enter your email below to login to your account.</CardDescription>
+            <div className="flex items-center justify-center">
+                <img src="public/learn-buddy-logo.svg" alt=""/>
+            </div>
+            <CardTitle className="text-left font-medium">Welcome back</CardTitle>
+            <CardDescription className="text-left">Sign in to continue your study sessions</CardDescription>
         </CardHeader>
         <CardContent>
             <form id='login-form' onSubmit={handleSubmit(handleUserLogin)}>
                 <FieldGroup>
-                    <Field data-invalid={errors.email}>
+                    <Field data-invalid={errors.email} className="gap-1">
                         <FieldLabel htmlFor="email-field"
-                                    className="text-black">Email</FieldLabel>
+                                    className="text-stone-600">Email</FieldLabel>
                         <Input id="email-field" {...register('email')} type="email"
                                placeholder="Enter your email"
                                className="rounded-sm aria-invalid:text-black bg-stone-100 border-stone-200 placeholder:text-stone-400 focus-visible:border-green-800 focus-visible:ring-green-600/20"
@@ -48,9 +51,9 @@ function Login() {
                         )}
                     </Field>
 
-                    <Field data-invalid={errors.password}>
+                    <Field data-invalid={errors.password} className="gap-1">
                         <FieldLabel htmlFor="password-field"
-                                    className="text-black">Password</FieldLabel>
+                                    className="text-stone-600">Password</FieldLabel>
                         <InputGroup
                             className="rounded-sm bg-stone-100 border-stone-200 placeholder:text-stone-400 has-[[data-slot=input-group-control]:focus-visible]:border-green-800 has-[[data-slot=input-group-control]:focus-visible]:ring-green-600/20">
                             <InputGroupInput id="password-field" {...register('password')}
@@ -78,7 +81,7 @@ function Login() {
         </CardContent>
         <CardFooter className="flex flex-col gap-4">
             <Button type="submit" form="login-form" aria-label="Submit"
-                    className="w-full rounded-sm  bg-green-800 text-white border-stone-200 dark:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-auto disabled:bg-green-800"
+                    className="w-full rounded-sm  bg-green-800 hover:bg-green-800/90 text-white border-stone-200 cursor-pointer dark:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-auto disabled:bg-green-800"
                     disabled={!isValid || logUserIn.isPending}>
 
                 {!logUserIn.isPending ? 'Sign In' : 'Logging in... '}
