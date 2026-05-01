@@ -1,5 +1,6 @@
 import axios, {type AxiosResponse, type InternalAxiosRequestConfig} from "axios";
 import {JWT_KEY} from "@/shared/constants/storage-keys.const.ts";
+import {useAuthStore} from "@/modules/auth/store/auth.store.ts";
 
 const api = axios.create({
     baseURL: import.meta.env.VITE_API_URL,
@@ -8,7 +9,7 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((config: InternalAxiosRequestConfig) => {
-    const jwtLocalStorageToken = localStorage.getItem(JWT_KEY);
+    const jwtLocalStorageToken = useAuthStore.getState().token;
 
     if (jwtLocalStorageToken) {
         config.headers.setAuthorization(`Bearer ${jwtLocalStorageToken}`, true);
@@ -20,7 +21,7 @@ api.interceptors.request.use((config: InternalAxiosRequestConfig) => {
 api.interceptors.response.use(
     (response: AxiosResponse) => response, // success — just pass it through
     async (error) => {
-        if (error.response?.status === 401 && error.config.url !== 'auth/refresh') {
+        if (error.response?.status === 401 && error.config.url !== '/auth/refresh' && error.config.url !== '/auth/login') {
             // 👈 token expired — what should happen here?
             try {
                 const refreshTokenResponse: AxiosResponse = await api.post('auth/refresh');

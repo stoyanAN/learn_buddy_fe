@@ -1,20 +1,31 @@
 import {StrictMode} from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import {createBrowserRouter, RouterProvider} from "react-router";
-import App from "@/App.tsx";
+import {RouterProvider} from "react-router";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
+import {Toaster} from "sonner";
+import {rootRouter} from "@/router.ts";
 
-const router = createBrowserRouter([
-    {
-        index: true,
-        Component: App
-    },
-]);
+
+const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            staleTime: 5 * 60 * 1000,
+            retry: 1,
+            refetchOnWindowFocus: false
+        }
+    }
+});
 
 const root = document.getElementById("root")!;
 
 ReactDOM.createRoot(root).render(
     <StrictMode>
-        <RouterProvider router={router}/>
+        <QueryClientProvider client={queryClient}>
+            <RouterProvider router={rootRouter}/>
+            <ReactQueryDevtools initialIsOpen={false}/>
+            <Toaster/>
+        </QueryClientProvider>
     </StrictMode>
 );
