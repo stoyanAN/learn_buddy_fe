@@ -1,5 +1,6 @@
 import axios, {type AxiosResponse, type InternalAxiosRequestConfig} from "axios";
 import {JWT_KEY} from "@/shared/constants/storage-keys.const.ts";
+import {useAuthStore} from "@/modules/auth/store/auth.store.ts";
 
 const api = axios.create({
     baseURL: import.meta.env.VITE_API_URL,
@@ -8,7 +9,7 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((config: InternalAxiosRequestConfig) => {
-    const jwtLocalStorageToken = localStorage.getItem(JWT_KEY);
+    const jwtLocalStorageToken = useAuthStore.getState().token;
 
     if (jwtLocalStorageToken) {
         config.headers.setAuthorization(`Bearer ${jwtLocalStorageToken}`, true);

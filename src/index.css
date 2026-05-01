@@ -246,6 +246,30 @@
     code, pre, kbd {
         font-family: var(--font-mono), serif;
     }
+
+    input {
+        color-scheme: dark;
+    }
+
+}
+
+
+/* ============================================================
+   AUTOFILL OVERRIDE
+   Must be outside @layer so it beats @layer utilities (shadow-none, etc.).
+   Uses the 9999s transition trick: the browser forces background-color on
+   autofilled inputs, but with a 9999s transition it never visually applies
+   during a user session — keeping the input transparent so the InputGroup
+   container background shows through uniformly (icon area + input area match).
+   ============================================================ */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 9999s ease-in-out 0s, color 9999s ease-in-out 0s !important;
+    -webkit-text-fill-color: var(--color-text-primary) !important;
+    caret-color: var(--color-accent);
 }
 
 

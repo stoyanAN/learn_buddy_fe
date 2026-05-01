@@ -1,9 +1,14 @@
 import {createBrowserRouter} from "react-router";
-import Login from "@/modules/auth/components/login/Login.tsx";
+import LoginForm from "@/modules/auth/components/login/LoginForm.tsx";
+import SignUpForm from "@/modules/auth/components/sign-up/SIgnUpForm.tsx";
 
 export const rootRouter = createBrowserRouter([
     {
         index: true,
-        Component: Login
+        Component: LoginForm
+    },
+    {
+        path: 'sign-up',
+        Component: SignUpForm
     },
 ]);
