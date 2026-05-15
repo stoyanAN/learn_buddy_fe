@@ -3,6 +3,7 @@ import LandingPage from "@/modules/landing-page/components/LandingPage.tsx";
 import AuthLayout from "@/modules/auth/components/AuthLayout.tsx";
 import {authRoutes} from "@/pages/auth/auth.routes.ts";
 import {MAIN_PATHS} from "@/shared/constants/main-paths.const.ts";
+import PageNotFound from "@/shared/components/errors/PageNotFound.tsx";
 
 export const rootRouter = createBrowserRouter([
     {
@@ -15,6 +16,6 @@ export const rootRouter = createBrowserRouter([
         children: [
             ...authRoutes
         ]
-    }
-    // { path: '*', element: <NotFoundPage /> }
+    },
+    {path: '*', Component: PageNotFound}
 ]);

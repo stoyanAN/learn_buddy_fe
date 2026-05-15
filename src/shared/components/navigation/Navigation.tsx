@@ -12,14 +12,13 @@ function Navigation() {
             <NavigationMenuLink
                 onClick={() => navigate("/")}
                 className="text-accent-bright cursor-pointer transition-colors px-1 focus-visible:ring-1 text-lg font-semibold">
-                <img width={32} height={32} src="../../../public/logo.svg" alt="Learn Buddy logo"/>
+                <img width={32} height={32} src="../../../../public/logo.svg" alt="Learn Buddy logo"/>
                 Learn Buddy
             </NavigationMenuLink>
 
             <div className="flex items-center gap-4">
                 <NavigationMenuLink
                     onClick={() => navigate("/login")}
-                    // className="text-text-secondary hover:text-text-primary cursor-pointer transition-colors px-1 focus-visible:ring-1">
                     className="text-text-secondary hover:text-text-primary px-3 py-1.5 rounded-sm hover:bg-text-primary/10 cursor-pointer transition-all text-sm">
                     Features
                 </NavigationMenuLink>
