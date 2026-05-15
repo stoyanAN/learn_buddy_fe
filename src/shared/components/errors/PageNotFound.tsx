@@ -1,4 +1,5 @@
 import {useNavigate} from "react-router";
+import logo from "@/assets/logo.svg";
 
 function PageNotFound() {
     const navigate = useNavigate()
@@ -11,7 +12,7 @@ function PageNotFound() {
                 <span
                     onClick={() => navigate("/")}
                     className="text-accent-bright cursor-pointer transition-colors px-1 focus-visible:ring-1 text-lg font-semibold flex gap-2">
-                    <img width={32} height={32} src="public/logo.svg" alt="Learn Buddy logo"/>
+                    <img width={32} height={32} src={logo} alt="Learn Buddy logo"/>
                 Learn Buddy
                     </span>
             </nav>
@@ -30,7 +31,7 @@ function PageNotFound() {
                     style={{WebkitTextStroke: "1px rgba(124,92,191,0.3)"}}
                 >
                     <span>4</span>
-                    <img width={52} height={52} src="public/logo.svg" alt="Learn Buddy logo"/>
+                    <img width={52} height={52} src={logo} alt="Learn Buddy logo"/>
                     <span>4</span>
                 </div>
 

@@ -2,6 +2,7 @@ import {NavigationMenu, NavigationMenuLink} from "@/components/ui/navigation-men
 import {useNavigate} from "react-router";
 import {AUTH_PATHS} from "@/pages/auth/paths.ts";
 import {MAIN_PATHS} from "@/shared/constants/main-paths.const.ts";
+import logo from "@/assets/logo.svg";
 
 function Navigation() {
     const navigate = useNavigate();
@@ -12,7 +13,7 @@ function Navigation() {
             <NavigationMenuLink
                 onClick={() => navigate("/")}
                 className="text-accent-bright cursor-pointer transition-colors px-1 focus-visible:ring-1 text-lg font-semibold">
-                <img width={32} height={32} src="public/logo.svg" alt="Learn Buddy logo"/>
+                <img width={32} height={32} src={logo} alt="Learn Buddy logo"/>
                 Learn Buddy
             </NavigationMenuLink>
 
