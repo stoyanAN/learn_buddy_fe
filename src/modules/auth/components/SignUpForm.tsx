@@ -8,8 +8,11 @@ import {LockIcon, Mail, User} from "lucide-react";
 import {FormInputField} from "@/shared/components/FormInput.tsx";
 import {Spinner} from "@/components/ui/spinner.tsx";
 import {Separator} from "@/components/ui/separator.tsx";
+import {useNavigate} from "react-router";
+import {AUTH_PATHS} from "@/pages/auth/paths.ts";
 
 function SignUpForm() {
+    const navigate = useNavigate();
     const signUpUser = useSignUp();
     const {register, formState: {errors, isValid}, reset, handleSubmit} = useForm<SignUpSchemaType>({
         resolver: zodResolver(signUpSchema), defaultValues: {
@@ -30,14 +33,14 @@ function SignUpForm() {
     }
 
     return (<div className="w-2/3 sm:max-w-md p-5">
-        <h5 className="text-[22px] font-bold text-text-secondary tracking-tight mb-1.5">Welcome
-            back</h5>
+        <h5 className="text-[22px] font-bold text-text-secondary tracking-tight mb-1.5">Welcome</h5>
         <div className="text-sm text-violet-200">Already have an account? <Button variant="link"
-                                                                                  className="text-accent hover:text-accent-bright cursor-pointer transition-colors px-1">Sign
+                                                                                  className="text-accent hover:text-accent-bright cursor-pointer transition-colors px-1"
+                                                                                  onClick={() => navigate(`../${AUTH_PATHS.SIGN_IN}`)}>Sign
             in</Button></div>
         <form id="signup-form" onSubmit={handleSubmit(handleUserSignUp)}>
             <FieldGroup>
-                <div className="grid grid-cols-2 gap-2.5 mb-[18px]">
+                <div className="grid grid-cols-2 gap-2.5">
                     <FormInputField
                         id="first-name-field"
                         label="First Name"

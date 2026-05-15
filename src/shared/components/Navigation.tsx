@@ -1,15 +1,18 @@
 import {NavigationMenu, NavigationMenuLink} from "@/components/ui/navigation-menu.tsx";
 import {useNavigate} from "react-router";
+import {AUTH_PATHS} from "@/pages/auth/paths.ts";
+import {MAIN_PATHS} from "@/shared/constants/main-paths.const.ts";
 
 function Navigation() {
     const navigate = useNavigate();
 
     return (
-        <NavigationMenu className="flex items-center justify-between !w-screen max-w-full px-16 py-5">
+        <NavigationMenu
+            className="flex items-center justify-between !w-screen max-w-full px-16 py-5 border-b-[0.5px] border-border/30">
             <NavigationMenuLink
                 onClick={() => navigate("/")}
                 className="text-accent-bright cursor-pointer transition-colors px-1 focus-visible:ring-1 text-lg font-semibold">
-                <img width={32} height={32} src="public/logo.svg" alt="Learn Buddy logo"/>
+                <img width={32} height={32} src="../../../public/logo.svg" alt="Learn Buddy logo"/>
                 Learn Buddy
             </NavigationMenuLink>
 
@@ -31,7 +34,7 @@ function Navigation() {
                     Pricing
                 </NavigationMenuLink>
                 <NavigationMenuLink
-                    onClick={() => navigate("/sign-in")}
+                    onClick={() => navigate(`../${MAIN_PATHS.AUTH}/${AUTH_PATHS.SIGN_IN}`, {relative: 'route'})}
                     className="rounded-sm
                     disabled:pointer-events-auto
     bg-accent hover:bg-accent-bright active:bg-accent-dim

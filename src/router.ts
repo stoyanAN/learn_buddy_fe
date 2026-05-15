@@ -1,19 +1,20 @@
 import {createBrowserRouter} from "react-router";
-import LoginForm from "@/modules/auth/components/login/LoginForm.tsx";
-import SignUpForm from "@/modules/auth/components/sign-up/SIgnUpForm.tsx";
-import Navigation from "@/modules/landing-page/components/Navigation.tsx";
+import LandingPage from "@/modules/landing-page/components/LandingPage.tsx";
+import AuthLayout from "@/modules/auth/components/AuthLayout.tsx";
+import {authRoutes} from "@/pages/auth/auth.routes.ts";
+import {MAIN_PATHS} from "@/shared/constants/main-paths.const.ts";
 
 export const rootRouter = createBrowserRouter([
     {
         index: true,
-        Component: Navigation
+        Component: LandingPage
     },
     {
-        path: 'sign-in',
-        Component: LoginForm
-    },
-    {
-        path: 'sign-up',
-        Component: SignUpForm
-    },
+        path: MAIN_PATHS.AUTH,
+        Component: AuthLayout,
+        children: [
+            ...authRoutes
+        ]
+    }
+    // { path: '*', element: <NotFoundPage /> }
 ]);

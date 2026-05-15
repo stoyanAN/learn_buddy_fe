@@ -8,8 +8,11 @@ import {Spinner} from "@/components/ui/spinner.tsx";
 import {useLogin} from "@/modules/auth/hooks/useLogin.ts";
 import {Separator} from "@/components/ui/separator.tsx";
 import {FormInputField} from "@/shared/components/FormInput.tsx";
+import {useNavigate} from "react-router";
+import {AUTH_PATHS} from "@/pages/auth/paths.ts";
 
-function LoginForm() {
+function SignInForm() {
+    const navigate = useNavigate();
     const logUserIn = useLogin();
     const {register, formState: {errors, isValid}, reset, handleSubmit} = useForm<LoginSchemaType>({
         resolver: zodResolver(loginSchema), defaultValues: {
@@ -29,11 +32,8 @@ function LoginForm() {
 
 
     return (<div className="w-2/3 sm:max-w-md  p-5">
-        <h5 className="text-[22px] font-bold text-text-secondary tracking-tight mb-1.5">Welcome
+        <h5 className="text-[22px] font-bold text-text-secondary tracking-tight mb-7">Welcome
             back</h5>
-        <div className="text-sm text-violet-200">Don't have an account? <Button variant="link"
-                                                                                className="text-accent hover:text-accent-bright cursor-pointer transition-colors px-1 focus-visible:ring-1">Sign
-            up</Button></div>
         <form id='login-form' onSubmit={handleSubmit(handleUserLogin)} autoComplete="off">
             <FieldGroup>
                 <FormInputField
@@ -73,7 +73,7 @@ function LoginForm() {
                 </label>
             </div>
         </form>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 mt-14">
             <Button type="submit" form="login-form" aria-label="Submit"
                     className="w-full rounded-sm
                     disabled:pointer-events-auto
@@ -93,10 +93,11 @@ function LoginForm() {
                     className="inline-block text-xs text-text-muted w-max relative -left-1">Don't have an account?</span>
                 <Separator className="!w-auto"/>
             </div>
-            <Button variant="link" className="text-xs text-accent hover:text-accent-glow cursor-pointer">Create a free
+            <Button variant="link" className="text-xs text-accent hover:text-accent-glow cursor-pointer"
+                    onClick={() => navigate(`../${AUTH_PATHS.SIGN_UP}`)}>Create a free
                 account</Button>
         </div>
     </div>)
 }
 
-export default LoginForm
+export default SignInForm
