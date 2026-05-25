@@ -1,4 +1,4 @@
-// shared/components/form/FormInput.tsx
+// shared/components/form/FormInputField.tsx
 import {type FieldError as FieldErrorType, type UseFormRegisterReturn} from 'react-hook-form'
 import * as React from "react";
 import {type ReactNode, useState} from "react";

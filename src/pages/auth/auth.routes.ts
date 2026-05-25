@@ -12,5 +12,11 @@ export const authRoutes = [
         lazy: {
             Component: async () => (await import('@/modules/auth/components/SignUpForm')).default
         }
+    },
+    {
+        path: AUTH_PATHS.FORGOT_PASSWORD,
+        lazy: {
+            Component: async () => (await import('@/modules/auth/components/ForgotPasswordLayout.tsx')).default
+        }
     }
 ];

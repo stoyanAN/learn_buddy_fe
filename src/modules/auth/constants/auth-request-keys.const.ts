@@ -1,6 +1,8 @@
 export const AUTH_REQUEST_KEYS = {
-    LOGIN: 'login',
+    SIGN_IN: 'sign-in',
     LOGOUT: 'logout',
     REFRESH: 'refresh',
-    SIGN_UP: 'signup',
+    SIGN_UP: 'sign-up',
+    RESET_PASSWORD: 'reset-password',
+    FORGOT_PASSWORD: 'forgot-password',
 } as const;

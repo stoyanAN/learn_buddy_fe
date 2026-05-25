@@ -1,5 +1,5 @@
 import {useForm} from "react-hook-form";
-import {loginSchema, type LoginSchemaType} from "@/modules/auth/schemas/login.schema.ts";
+import {signInSchema, type SignInSchemaType} from "@/modules/auth/schemas/sign-in-schema.ts";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {FieldGroup} from "@/components/ui/field.tsx";
 import {Button} from "@/components/ui/button.tsx";
@@ -7,22 +7,22 @@ import {LockIcon, Mail} from "lucide-react";
 import {Spinner} from "@/components/ui/spinner.tsx";
 import {useLogin} from "@/modules/auth/hooks/useLogin.ts";
 import {Separator} from "@/components/ui/separator.tsx";
-import {FormInputField} from "@/shared/components/FormInput.tsx";
-import {useNavigate} from "react-router";
+import {FormInputField} from "@/shared/components/FormInputField.tsx";
+import {Link, useNavigate} from "react-router";
 import {AUTH_PATHS} from "@/pages/auth/paths.ts";
 
 function SignInForm() {
     const navigate = useNavigate();
     const logUserIn = useLogin();
-    const {register, formState: {errors, isValid}, reset, handleSubmit} = useForm<LoginSchemaType>({
-        resolver: zodResolver(loginSchema), defaultValues: {
+    const {register, formState: {errors, isValid}, reset, handleSubmit} = useForm<SignInSchemaType>({
+        resolver: zodResolver(signInSchema), defaultValues: {
             email: '',
             password: ''
         },
         mode: 'onTouched'
     });
 
-    const handleUserLogin = (data: LoginSchemaType) => {
+    const handleUserLogin = (data: SignInSchemaType) => {
         logUserIn.mutate(data, {
             onError: () => {
                 reset()
@@ -55,10 +55,17 @@ function SignInForm() {
                     placeholder="Enter your password"
                     icon={LockIcon}
                     labelAction={
-                        <Button variant="link"
-                                onClick={() => console.log('it is working')}
-                                className="text-accent hover:text-accent-bright cursor-pointer transition-colors px-1 text-xs focus-visible:ring-1">Forgot
-                            password?</Button>
+                        // <Button variant="link"
+                        //         onClick={() => console.log('it is working')}
+                        //         className="text-accent hover:text-accent-bright cursor-pointer transition-colors px-1 text-xs focus-visible:ring-1">Forgot
+                        //     password?</Button>
+                        <Link
+                            className="text-accent hover:text-accent-bright cursor-pointer transition-colors px-1 text-xs focus-visible:ring-1"
+                            to={{
+                                pathname: `../${AUTH_PATHS.FORGOT_PASSWORD}`
+                            }}
+                        >Forgot
+                            password?</Link>
                     }
                 />
             </FieldGroup>
