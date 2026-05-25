@@ -1,3 +1,5 @@
 export const MAIN_PATHS = {
-    AUTH: 'auth'
+    AUTH: 'auth',
+    PRIVACY: 'privacy',
+    TERMS: 'terms',
 } as const;

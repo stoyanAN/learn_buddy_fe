@@ -5,7 +5,7 @@ import {Button} from "@/components/ui/button.tsx";
 import {useSignUp} from "@/modules/auth/hooks/useSignUp.ts";
 import {FieldGroup} from "@/components/ui/field.tsx";
 import {LockIcon, Mail, User} from "lucide-react";
-import {FormInputField} from "@/shared/components/FormInput.tsx";
+import {FormInputField} from "@/shared/components/FormInputField.tsx";
 import {Spinner} from "@/components/ui/spinner.tsx";
 import {Separator} from "@/components/ui/separator.tsx";
 import {useNavigate} from "react-router";

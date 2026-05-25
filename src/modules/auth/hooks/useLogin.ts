@@ -13,8 +13,8 @@ export function useLogin() {
 
 
     return useMutation({
-        mutationKey: [AUTH_REQUEST_KEYS.LOGIN],
-        mutationFn: authService.login,
+        mutationKey: [AUTH_REQUEST_KEYS.SIGN_IN],
+        mutationFn: authService.signIn,
         onSuccess: ({accessToken, user}) => {
             setAuth(user, accessToken);
             navigate(DASHBOARD_PATHS.ROOT);
